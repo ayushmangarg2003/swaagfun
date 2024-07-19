@@ -72,8 +72,8 @@ const Create = () => {
                 setGeneratingImg(true);
                 //Using AXIOS
                 const response = await axios.post(
-                    'http://localhost:8080/api/v1/dalle',
-                    // 'https://swaagfun.onrender.com/api/v1/dalle',
+                    // 'http://localhost:8080/api/v1/dalle',
+                    'https://swaagfun.onrender.com/api/v1/dalle',
                     { prompt: form.prompt },
                 );
                 setForm({ ...form, photo: `data:image/jpeg;base64,${response.data.photo}` })
