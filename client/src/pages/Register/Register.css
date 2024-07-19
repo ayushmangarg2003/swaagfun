@@ -1,0 +1,121 @@
+/* Register Page */
+.register-parent {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    padding: 2rem;
+    margin-top: 7rem;
+    margin-bottom: 1rem;
+    min-height: 80vh;
+    height: 80vh;
+
+    .register-left {
+        width: 40%;
+        height: 100%;
+
+        & img {
+            height: 100%;
+            width: 100%;
+        }
+    }
+
+    .register-right {
+        width: 60%;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 1rem;
+        padding: 4rem 4rem;
+        background-color: var(--white);
+        border: none;
+
+        & h1 {
+            display: flex;
+            gap: 5px;
+            font-family: var(--secondary-font);
+            font-size: 2rem;
+            
+            & p {
+                font-family: var(--secondary-font);
+                font-weight: 600;
+                color: var(--primary-color);
+            }
+        }
+
+        & input {
+            outline: none;
+            padding: 16px 12px;
+            border-color: rgba(0, 0, 0, 0.08);
+            font-size: 1.1rem;
+        }
+
+        .register-btn {
+            background-color: var(--primary-color);
+            padding: 12px 1px;
+            text-align: center;
+            color: var(--white);
+            font-size: var(--secondary-font);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        .register-btn:hover {
+            background-color: var(--second-color);
+        }
+
+        .register-olduser {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--black-light);
+
+            .register-login-redirect {
+                font-family: var(--secondary-font);
+                font-weight: 600;
+                color: var(--primary-color);
+                text-decoration: underline;
+                text-transform: uppercase;
+            }
+        }
+
+
+    }
+}
+
+/* Media Query 1000px */
+@media only screen and (max-width:1000px) {
+    .register-parent {
+        flex-direction: column-reverse;
+        padding: 1rem 10px;
+        height: auto;
+
+        .register-left {
+            width: 100%;
+
+            & img {
+                width: 100%;
+            }
+        }
+
+        .register-right {
+            width: 100%;
+            padding: 1rem;
+
+        }
+    }
+}
+
+/* Media Query 520px */
+@media only screen and (max-width:520px) {
+    .register-parent {
+        gap: 1rem;
+        .register-right {
+
+            & h1 {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

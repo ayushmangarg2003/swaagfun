@@ -1,0 +1,59 @@
+.create-parent{
+    padding: 7rem 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+.create-heading{
+    font-size: 36px;
+    font-weight: 800;
+}
+.create-title{
+    font-size: 20px;
+    color: gray;
+}
+.create-form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 100%;
+    align-items: center;
+    
+    & div{
+        display: flex;
+        flex-direction: column;
+        max-width: 750px;
+        width: 95%;
+        gap: 1rem;
+    }
+}
+
+.photoParent{
+    max-width: 350px;
+    width: 100%;
+    border: 1px solid rgba(128, 128, 128, 0.4);
+    border-radius: 12px;
+    aspect-ratio: 1/1;
+    padding: 2rem;
+}
+.preview{
+    opacity: 0.3;
+}
+.generate-btn{
+    background-color: rgba(0, 128, 0, 0.8);
+    width: 120px;
+    padding: 12px 0;
+    border-radius: 8px;
+    color: #f6f6f6;
+    transition: var(--transition-normal);
+
+    &:hover{
+        background-color: green;
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .create-parent{
+        padding: 7rem 8px;
+    }
+}

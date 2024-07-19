@@ -1,0 +1,113 @@
+.login-parent {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem;
+    min-height: 80vh;
+    margin-top: 7rem;
+    margin-bottom: 1rem;
+    .login-left{
+        width: 50%;
+        display: flex;
+        justify-content: start;
+        & img{
+            width: 90%;
+        }
+    }
+    
+    .login-form {
+        background-color: var(--white);
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        padding: 1rem;
+        border-radius: 8px;
+        width: 50%;
+
+        & h1 {
+            display: flex;
+            gap: 6px;
+            font-size: 2rem;
+            
+            & p {
+                font-family: var(--secondary-font);
+                font-weight: 600;
+                color: var(--primary-color);
+            }
+        }
+
+
+        & input {
+            outline: none;
+            padding: 16px 12px;
+            border-color: rgba(0, 0, 0, 0.08);
+            font-size: 1.1rem;
+        }
+
+        .login-btn {
+            background-color: var(--primary-color);
+            padding: 12px 1px;
+            text-align: center;
+            color: var(--white);
+            font-weight: 600;
+            font-family: var(--secondary-font);
+            text-transform: uppercase;
+            font-size: 1.2rem;
+            cursor: pointer;
+            
+        }
+
+        .login-btn:hover {
+            background-color: var(--second-color);
+        }
+
+        .login-newhere {
+            text-align: center;
+            font-size: 1rem;
+            color: var(--black-light);
+
+            .login-register-redirect {
+                font-family: var(--secondary-font);
+                font-weight: 600;
+                color: var(--primary-color);
+                text-decoration: underline;
+                text-transform: uppercase;
+            }
+        }
+    }
+}
+
+
+
+@media only screen and (max-width:800px) {
+    .login-parent {
+        flex-direction: column-reverse;
+        .login-left{
+            width: 100%;
+            & img{
+                width: 90%;
+            }
+        }
+        .login-form {
+            width: 100%;
+        }
+    }
+}
+
+/* Media Query 520px */
+@media only screen and (max-width:520px) {
+    .login-parent {
+        padding: 2rem 10px;
+
+        .login-form {
+            padding: 2rem 1rem;
+            width: 100%;
+            gap: 1.5rem;
+
+            & h1 {
+                font-size: 1.25rem;
+            }
+        }
+    }
+}
