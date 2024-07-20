@@ -1,0 +1,1 @@
+export const backendLink = 'https://swaagfun.onrender.com'

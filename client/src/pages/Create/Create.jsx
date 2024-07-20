@@ -18,10 +18,12 @@ import {
     useSteps,
 } from '@chakra-ui/react'
 import axios from 'axios';
+import { backendLink } from "../../utils/details";
 
 const Create = () => {
 
     const steps = [
+        { title: '', description: '' },
         { title: '', description: '' },
         { title: '', description: '' },
         { title: '', description: '' },
@@ -33,6 +35,7 @@ const Create = () => {
     const [second, setSecond] = useState(false)
     const [third, setThird] = useState(false)
     const [fourth, setFourth] = useState(false)
+    const [fifth, setFifth] = useState(false)
 
     const [step, setStep] = useState(0)
 
@@ -50,6 +53,10 @@ const Create = () => {
             setThird(false)
             setFourth(true)
         }
+        if (step == 3) {
+            setFourth(false)
+            setFifth(true)
+        }
     }
 
     const getRandomPrompt = (prompt) => {
@@ -59,9 +66,9 @@ const Create = () => {
         return randomPrompt;
     };
 
-    const [promt, setPrompt] = useState("")
+    const [prompt, setPrompt] = useState("")
     const [form, setForm] = useState({
-        prompt: promt,
+        prompt: prompt,
         photo: "",
     });
 
@@ -73,7 +80,7 @@ const Create = () => {
                 //Using AXIOS
                 const response = await axios.post(
                     // 'http://localhost:8080/api/v1/dalle',
-                    'https://swaagfun.onrender.com/api/v1/dalle',
+                    `${backendLink}/api/v1/dalle`,
                     { prompt: form.prompt },
                 );
                 setForm({ ...form, photo: `data:image/jpeg;base64,${response.data.photo}` })
@@ -112,7 +119,7 @@ const Create = () => {
                     images using AI and share them with community
                 </p>
             </div>
-            <Stepper index={step}>
+            <Stepper size={'sm'} index={step}>
                 {steps.map((step, index) => (
                     <Step key={index}>
                         <StepIndicator>
@@ -122,12 +129,6 @@ const Create = () => {
                                 active={<StepNumber />}
                             />
                         </StepIndicator>
-
-                        <Box flexShrink='0'>
-                            <StepTitle>{step.title}</StepTitle>
-                            <StepDescription>{step.description}</StepDescription>
-                        </Box>
-
                         <StepSeparator />
                     </Step>
                 ))}
@@ -190,14 +191,32 @@ const Create = () => {
                     fourth ?
                         <>
                             <FormField
-                                labelname="Any details to make your picture extra cool"
+                                labelname="Choose an art style"
                                 type="text"
-                                name="extra"
-                                placeholder="Bright, colorful, spooky, dark, a red hat."
+                                name="artstyle"
+                                placeholder="Painting, Sketch etc"
                                 value={form.extra}
                                 handleChange={(e) => setPrompt(prompt + e.target.value)}
                             />
 
+                            <button type="button" onClick={changeStep} className="generate-btn">
+                                {"Next"}
+                            </button>
+                        </>
+                        : <></>
+                }
+
+                {
+                    fifth ?
+                        <>
+                            <FormField
+                                labelname="Choose Aspect Ratio of the image"
+                                type="text"
+                                name="extra"
+                                placeholder="16:9, 1:1, 4:3 etc"
+                                value={form.extra}
+                                handleChange={(e) => setPrompt(prompt + e.target.value)}
+                            />
                             <button type="button" onClick={generateImage} className="generate-btn">
                                 {generatingImg ? "Generating..." : "Generate"}
                             </button>
