@@ -6,10 +6,6 @@ import img6 from "../assets/img6.webp"
 
 export const IMAGES = [
     {
-        img: img6,
-        caption: "A few decks of Red and Blue playing cards with King of Hearts on the Top"
-    },
-    {
         img: img2,
         caption: "Imagine the desk of a person when they are managing their Taxes"
     },
