@@ -79,7 +79,6 @@ const Create = () => {
                 setGeneratingImg(true);
                 //Using AXIOS
                 const response = await axios.post(
-                    // 'http://localhost:8080/api/v1/dalle',
                     `${backendLink}/api/v1/dalle`,
                     { prompt: form.prompt },
                 );
