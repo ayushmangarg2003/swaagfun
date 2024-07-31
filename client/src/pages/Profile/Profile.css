@@ -1,0 +1,93 @@
+.profile-parent {
+    min-height: 75vh;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    & h1 {
+        background-color: white;
+        padding: 4px 8px;
+        width: 100%;
+        align-self: flex-start;
+        font-size: 20px;
+        border-radius: 4px;
+        box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.19), -1px -1px 1px rgba(0, 0, 0, 0.19);
+        text-align: start;
+    }
+}
+
+.verification{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    /* justify-content: start; */
+}
+.signedIn {
+    width: 90%;
+    max-width: 520px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+}
+
+.logoutBtn {
+    background-color: rgba(255, 0, 0, 0.7);
+    padding: 8px 24px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 600;
+    width: 100%;
+    font-size: 20px;
+    transition: 0.2s ease;
+}
+
+.verifyBtn {
+    background-color: rgb(0, 180, 0);
+    padding: 6px 4px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 400;
+    font-size: 16px;
+    width: 80px;
+    transition: 0.2s ease;
+}
+
+.signInBtn{
+    background-color: var(--primary-color);
+    padding: 6px 4px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 400;
+    font-size: 16px;
+    width: 90%;
+    max-width: 300px;
+    transition: 0.2s ease;
+}
+
+.signInBtn:hover{
+    background-color: var(--second-color);
+}
+
+.logoutBtn:hover {
+    background-color: rgb(175, 0, 0);
+}
+.verifyBtn:hover {
+    background-color: rgb(0, 150, 0);
+}
+
+.fa-circle-check {
+    padding-left: 8px;
+    color: green;
+    font-weight: 600;
+}
+
+.fa-circle-xmark {
+    padding-left: 8px;
+    color: red;
+    font-weight: 600;
+}

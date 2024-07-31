@@ -19,8 +19,22 @@ import {
 } from '@chakra-ui/react'
 import axios from 'axios';
 import { backendLink } from "../../utils/details";
+import { auth } from "../../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const Create = () => {
+
+    const [userVerified, setUserVerified] = useState(false)
+    const [user, setUser] = useState(false)
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUser(true)
+            setUserVerified(user.emailVerified)
+        } else {
+            setUser(false)
+        }
+    });
 
     const steps = [
         { title: '', description: '' },
@@ -216,9 +230,14 @@ const Create = () => {
                                 value={form.extra}
                                 handleChange={(e) => setPrompt(prompt + e.target.value)}
                             />
-                            <button type="button" onClick={generateImage} className="generate-btn">
-                                {generatingImg ? "Generating..." : "Generate"}
-                            </button>
+
+                            {userVerified ? (
+                                <button type="button" onClick={generateImage} className="generate-btn">
+                                    {generatingImg ? "Generating..." : "Generate"}
+                                </button>
+                            ) : (
+                                <h1 className="warning">You Need to Verify Your Email To Generate</h1>
+                            )}
                         </>
                         : <></>
                 }
