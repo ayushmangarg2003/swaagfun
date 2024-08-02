@@ -1,21 +1,18 @@
 import React, { useState } from "react";
 import preview from "../../assets/preview.png";
 import FormField from "../../components/FormFeild/FormFeild";
-import Loader from "../../components/Loader/Loader";
+import GeneratingLoader from "../../components/GeneratingLoader/GeneratingLoader";
+import { useLocation } from 'react-router-dom';
 import "./Create.css"
 import { surpriseMePrompts } from "../../utils/constants";
 import {
-    Box,
     Step,
-    StepDescription,
     StepIcon,
     StepIndicator,
     StepNumber,
     StepSeparator,
     StepStatus,
-    StepTitle,
     Stepper,
-    useSteps,
 } from '@chakra-ui/react'
 import axios from 'axios';
 import { backendLink } from "../../utils/details";
@@ -23,9 +20,9 @@ import { auth } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 const Create = () => {
-
     const [userVerified, setUserVerified] = useState(false)
     const [user, setUser] = useState(false)
+    const location = useLocation();
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -80,7 +77,7 @@ const Create = () => {
         return randomPrompt;
     };
 
-    const [prompt, setPrompt] = useState("")
+    const [prompt, setPrompt] = useState(location.state.prompt)
     const [form, setForm] = useState({
         prompt: prompt,
         photo: "",
@@ -251,7 +248,7 @@ const Create = () => {
                     {
                         generatingImg && (
                             <div>
-                                {/* <Loader /> */}
+                                <GeneratingLoader />
                             </div>
                         )
                     }
