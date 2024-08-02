@@ -8,11 +8,13 @@ import Register from './pages/Register/Register'
 import Navbar from './components/Navbar/Navbar'
 import Create from './pages/Create/Create'
 import Profile from './pages/Profile/Profile'
+import ScrollToTop from './components/ScrollToTop'
 
 const App = () => {
   return (
     <div className='app'>
       <BrowserRouter>
+        <ScrollToTop />
         <Navbar />
         <Routes>
           <Route path={'/'} element={<Home />} />
