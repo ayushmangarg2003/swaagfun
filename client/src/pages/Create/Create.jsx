@@ -5,6 +5,7 @@ import GeneratingLoader from "../../components/GeneratingLoader/GeneratingLoader
 import { useLocation } from 'react-router-dom';
 import "./Create.css"
 import { surpriseMePrompts } from "../../utils/constants";
+
 import {
     Step,
     StepIcon,
@@ -13,7 +14,8 @@ import {
     StepSeparator,
     StepStatus,
     Stepper,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
+
 import axios from 'axios';
 import { backendLink } from "../../utils/details";
 import { auth } from "../../firebase";
@@ -227,6 +229,7 @@ const Create = () => {
                                 value={form.extra}
                                 handleChange={(e) => setPrompt(prompt + e.target.value)}
                             />
+                            {/* <label className="sizeLabel">Choose Aspect Ratio of the image</label> */}
 
                             {userVerified ? (
                                 <button type="button" onClick={generateImage} className="generate-btn">

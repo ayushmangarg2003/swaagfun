@@ -33,8 +33,8 @@ const Slider = (props) => {
             extensions={{ AutoScroll }}
         >
             {
-                images.map((item) => (
-                    <SplideSlide className='sliderImg' >
+                images.map((item, index) => (
+                    <SplideSlide key={index} className='sliderImg' >
                         <img src={item.img} alt="image"/>
                         <p>{item.caption}</p>
                     </SplideSlide>

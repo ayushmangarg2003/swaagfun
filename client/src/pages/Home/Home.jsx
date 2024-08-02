@@ -37,8 +37,8 @@ const Home = () => {
       <div className="home-container">
         <div className="home-left">
           <div className="home-left-upper">
-            <h4 class="upper-head">Try it out now</h4>
-            <h1 class="home-head">Create Fun Swaags which are
+            <h4 className="upper-head">Try it out now</h4>
+            <h1 className="home-head">Create Fun Swaags which are
               <p><Typewriter words={["Creative!", "Unique!"]}
                 loop
                 typeSpeed={100}
@@ -47,7 +47,7 @@ const Home = () => {
           </div>
           <div className='input-btn-parent'>
             <Input height={'50px'} value={homePrompt} placeholder='Enter Prompt Here' size={'lg'} onChange={(e) => setHomePrompt(e.target.value)} />
-            <div className='home-btn' onClick={handleRedirect}><i class="fa-solid fa-arrow-right-long"></i></div>
+            <div className='home-btn' onClick={handleRedirect}><i className="fa-solid fa-arrow-right-long"></i></div>
           </div>
         </div>
         <div className="home-right">
