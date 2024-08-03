@@ -6,7 +6,6 @@ dotenv.config();
 
 const router = express.Router();
 
-
 const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 });
@@ -17,12 +16,13 @@ router.route('/').get((req, res) => {
 router.route('/').post(async (req, res) => {
   try {
     const { prompt } = req.body;
-
+    const { size } = req.body;
+    
     const response = await openai.images.generate({
       model: "dall-e-3",
       prompt,
       n: 1,
-      size: '1024x1024',
+      size: size,
       response_format: 'b64_json',
     });
 
@@ -30,7 +30,7 @@ router.route('/').post(async (req, res) => {
     // res.status(200).json({ photo: image });
     // res.json({photo: response.data})
 
-    res.send({photo:response.data[0].b64_json})
+    res.send({ photo: response.data[0].b64_json })
 
   } catch (error) {
     console.error("error:", error);

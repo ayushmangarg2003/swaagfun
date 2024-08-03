@@ -5,7 +5,7 @@ import GeneratingLoader from "../../components/GeneratingLoader/GeneratingLoader
 import { useLocation } from 'react-router-dom';
 import "./Create.css"
 import { surpriseMePrompts } from "../../utils/constants";
-
+import RadioCard from "../../components/RadioCard"
 import {
     Step,
     StepIcon,
@@ -14,6 +14,7 @@ import {
     StepSeparator,
     StepStatus,
     Stepper,
+    useRadioGroup,
 } from '@chakra-ui/react';
 
 import axios from 'axios';
@@ -50,6 +51,8 @@ const Create = () => {
     const [fourth, setFourth] = useState(false)
     const [fifth, setFifth] = useState(false)
 
+    const [imgSize, setImgSize] = useState('1024x1024')
+
     const [step, setStep] = useState(0)
 
     function changeStep() {
@@ -80,6 +83,7 @@ const Create = () => {
     };
 
     const [prompt, setPrompt] = useState(location.state.prompt)
+
     const [form, setForm] = useState({
         prompt: prompt,
         photo: "",
@@ -93,7 +97,7 @@ const Create = () => {
                 //Using AXIOS
                 const response = await axios.post(
                     `${backendLink}/api/v1/dalle`,
-                    { prompt: form.prompt },
+                    { prompt: form.prompt, size: imgSize },
                 );
                 setForm({ ...form, photo: `data:image/jpeg;base64,${response.data.photo}` })
             } catch (error) {
@@ -118,6 +122,18 @@ const Create = () => {
         const randomPrompt = getRandomPrompt(form.prompt);
         setForm({ ...form, prompt: randomPrompt })
     }
+
+
+    // Radio Options
+    const options = ['1792x1024', '1024x1024', '1024x1792']
+
+    const { getRootProps, getRadioProps } = useRadioGroup({
+        name: 'size',
+        defaultValue: '1024x1024',
+        onChange: setImgSize,
+    })
+
+    const group = getRootProps()
 
 
     return (
@@ -221,15 +237,18 @@ const Create = () => {
                 {
                     fifth ?
                         <>
-                            <FormField
-                                labelname="Choose Aspect Ratio of the image"
-                                type="text"
-                                name="extra"
-                                placeholder="16:9, 1:1, 4:3 etc"
-                                value={form.extra}
-                                handleChange={(e) => setPrompt(prompt + e.target.value)}
-                            />
-                            {/* <label className="sizeLabel">Choose Aspect Ratio of the image</label> */}
+                            <label className="sizeLabel">Choose Aspect Ratio of the image</label>
+
+                            <div>
+                                {options.map((value) => {
+                                    const radio = getRadioProps({ value })
+                                    return (
+                                        <RadioCard key={value} {...radio}>
+                                            {value}
+                                        </RadioCard>
+                                    )
+                                })}
+                            </div>
 
                             {userVerified ? (
                                 <button type="button" onClick={generateImage} className="generate-btn">
@@ -248,16 +267,17 @@ const Create = () => {
                     ) : (
                         <img src={preview} alt="Preview" className="preview" />
                     )}
-                    {
-                        generatingImg && (
-                            <div>
-                                <GeneratingLoader />
-                            </div>
-                        )
-                    }
                 </div>
             </div>
+            {
+                generatingImg && (
+                    <div>
+                        <GeneratingLoader />
+                    </div>
+                )
+            }
         </section>
+
     );
 };
 
