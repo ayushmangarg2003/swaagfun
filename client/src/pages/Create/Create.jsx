@@ -27,15 +27,6 @@ const Create = () => {
     const [user, setUser] = useState(false)
     const location = useLocation();
 
-    onAuthStateChanged(auth, (user) => {
-        if (user) {
-            setUser(true)
-            setUserVerified(user.emailVerified)
-        } else {
-            setUser(false)
-        }
-    });
-
     const steps = [
         { title: '', description: '' },
         { title: '', description: '' },
@@ -43,7 +34,6 @@ const Create = () => {
         { title: '', description: '' },
         { title: '', description: '' },
     ]
-
 
     const [first, setFirst] = useState(true)
     const [second, setSecond] = useState(false)
@@ -54,6 +44,19 @@ const Create = () => {
     const [imgSize, setImgSize] = useState('1024x1024')
 
     const [step, setStep] = useState(0)
+    const [prompt, setPrompt] = useState(location.state.prompt)
+    const [generatingImg, setGeneratingImg] = useState(false);
+
+    const options = ['1792x1024', '1024x1024', '1024x1792']
+
+    onAuthStateChanged(auth, (user) => {
+        if (user) {
+            setUser(true)
+            setUserVerified(user.emailVerified)
+        } else {
+            setUser(false)
+        }
+    });
 
     function changeStep() {
         setStep(step + 1)
@@ -82,7 +85,7 @@ const Create = () => {
         return randomPrompt;
     };
 
-    const [prompt, setPrompt] = useState(location.state.prompt)
+
 
     const [form, setForm] = useState({
         prompt: prompt,
@@ -94,7 +97,6 @@ const Create = () => {
         if (form.prompt) {
             try {
                 setGeneratingImg(true);
-                //Using AXIOS
                 const response = await axios.post(
                     `${backendLink}/api/v1/dalle`,
                     { prompt: form.prompt, size: imgSize },
@@ -111,8 +113,7 @@ const Create = () => {
     }
 
 
-    const [generatingImg, setGeneratingImg] = useState(false);
-    const [loading, setLoading] = useState(false);
+
 
     const handleChange = (e) => {
         setForm({ ...form, [e.target.name]: e.target.value })
@@ -124,9 +125,6 @@ const Create = () => {
     }
 
 
-    // Radio Options
-    const options = ['1792x1024', '1024x1024', '1024x1792']
-
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'size',
         defaultValue: '1024x1024',
@@ -134,7 +132,6 @@ const Create = () => {
     })
 
     const group = getRootProps()
-
 
     return (
         <section className="create-parent">
