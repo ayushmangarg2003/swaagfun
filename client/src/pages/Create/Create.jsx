@@ -16,16 +16,31 @@ import {
     Stepper,
     useRadioGroup,
 } from '@chakra-ui/react';
-
+import { getStorage, ref, uploadBytes } from "firebase/storage";
 import axios from 'axios';
 import { backendLink } from "../../utils/details";
 import { auth } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
 
 const Create = () => {
+    const storage = getStorage();
+
     const [userVerified, setUserVerified] = useState(false)
     const [user, setUser] = useState(false)
+    const [userEmail, setUserEmail] = useState("")
     const location = useLocation();
+
+
+    const upload = () => {
+        if (form.photo == null) {
+            return;
+        }
+        const ref2 = ref(storage, `images/${userEmail}/${form.prompt}`)
+        uploadBytes(ref2, form.photo).then(() => {
+            alert('Uploaded a file!');
+        });
+    }
+
 
     const steps = [
         { title: '', description: '' },
@@ -41,17 +56,18 @@ const Create = () => {
     const [fourth, setFourth] = useState(false)
     const [fifth, setFifth] = useState(false)
 
-    const [imgSize, setImgSize] = useState('1024x1024')
+    const [imgSize, setImgSize] = useState('1:1')
 
     const [step, setStep] = useState(0)
     const [prompt, setPrompt] = useState(location.state.prompt)
     const [generatingImg, setGeneratingImg] = useState(false);
 
-    const options = ['1792x1024', '1024x1024', '1024x1792']
+    const options = ['16:9', '1:1', '9:16']
 
     onAuthStateChanged(auth, (user) => {
         if (user) {
             setUser(true)
+            setUserEmail(user.email)
             setUserVerified(user.emailVerified)
         } else {
             setUser(false)
@@ -101,7 +117,8 @@ const Create = () => {
                     `${backendLink}/api/v1/dalle`,
                     { prompt: form.prompt, size: imgSize },
                 );
-                setForm({ ...form, photo: `data:image/jpeg;base64,${response.data.photo}` })
+                setForm({ ...form, photo: response.data.photo })
+                upload()
             } catch (error) {
                 alert(error);
             } finally {
@@ -127,7 +144,7 @@ const Create = () => {
 
     const { getRootProps, getRadioProps } = useRadioGroup({
         name: 'size',
-        defaultValue: '1024x1024',
+        defaultValue: '1:1',
         onChange: setImgSize,
     })
 

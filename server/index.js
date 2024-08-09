@@ -1,8 +1,8 @@
 import express  from "express";
-import * as dotenv from 'dotenv';
 import cors from "cors";
 import dalleRoutes from './routes/dalleRoutes.js'
 
+import * as dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();

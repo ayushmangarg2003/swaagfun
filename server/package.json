@@ -15,6 +15,7 @@
     "express": "^4.19.2",
     "mongoose": "^8.5.1",
     "nodemon": "^3.1.4",
-    "openai": "^4.52.7"
+    "openai": "^4.52.7",
+    "replicate": "^0.32.0"
   }
 }
