@@ -42,6 +42,11 @@ const Profile = () => {
         });
     }
 
+    const navigateGallery = (e) => {
+        e.preventDefault()
+        navigate('userGallery')
+    }
+
     return (
         <div className='profile-parent'>
             {user ?
@@ -50,9 +55,12 @@ const Profile = () => {
                     <div className='signedIn'>
                         <h1> Email : {email}</h1>
                         {verified ? (
-                            <h1>Status: Verified
-                                <i className="fa-regular fa-circle-check"></i>
-                            </h1>
+                            <>
+                                <h1>Status: Verified
+                                    <i className="fa-regular fa-circle-check"></i>
+                                </h1>
+                                <button className='imagesBtn' onClick={navigateGallery}>View My Images</button>
+                            </>
                         ) :
                             (
                                 <div className='verification'>

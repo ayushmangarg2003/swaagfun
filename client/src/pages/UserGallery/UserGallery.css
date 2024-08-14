@@ -1,0 +1,12 @@
+.userGalleryParent{
+    min-height: 70vh;
+    margin-top: 15vh;
+}
+.userGalleryHeading{
+    font-size: 36px;
+    text-decoration: underline;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    
+}

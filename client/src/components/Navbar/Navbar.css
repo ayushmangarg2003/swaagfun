@@ -162,34 +162,6 @@
             }
         }
 
-
-        .nav-center {
-            flex-direction: column;
-            position: absolute;
-            top: -100vh;
-            left: 0;
-            width: 100%;
-            opacity: 0;
-            height: 50vh;
-            transition: var(--transition-normal);
-            background-color: var(--white);
-            border-radius: 12px;
-            align-self: center;
-            box-shadow: 50px 0px 100vw rgba(0, 0, 0, 1);
-
-            .navlink {
-                .navlink-link {
-                    color: var(--black);
-                }
-            }
-        }
-
-        .nav-center.active {
-            opacity: 1;
-            transition: var(--transition-normal);
-            top: 0;
-        }
-
         .nav-right {
             .user-nav {
                 .user-icon {

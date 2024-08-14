@@ -1,5 +1,6 @@
 .profile-parent {
     min-height: 75vh;
+    padding-top: 10vh;
     display: flex;
     width: 100%;
     justify-content: center;
@@ -17,7 +18,7 @@
     }
 }
 
-.verification{
+.verification {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,6 +26,7 @@
     width: 100%;
     /* justify-content: start; */
 }
+
 .signedIn {
     width: 90%;
     max-width: 520px;
@@ -46,6 +48,20 @@
     transition: 0.2s ease;
 }
 
+.imagesBtn {
+    background-color: rgb(0, 180, 0);
+    padding: 8px 24px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 600;
+    width: 100%;
+    font-size: 20px;
+    transition: 0.2s ease;
+}
+.imagesBtn:hover{
+    background-color: rgb(0, 150, 0);
+}
+
 .verifyBtn {
     background-color: rgb(0, 180, 0);
     padding: 6px 4px;
@@ -57,7 +73,7 @@
     transition: 0.2s ease;
 }
 
-.signInBtn{
+.signInBtn {
     background-color: var(--primary-color);
     padding: 6px 4px;
     border-radius: 4px;
@@ -69,13 +85,14 @@
     transition: 0.2s ease;
 }
 
-.signInBtn:hover{
+.signInBtn:hover {
     background-color: var(--second-color);
 }
 
 .logoutBtn:hover {
     background-color: rgb(175, 0, 0);
 }
+
 .verifyBtn:hover {
     background-color: rgb(0, 150, 0);
 }

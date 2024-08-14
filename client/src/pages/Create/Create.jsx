@@ -25,20 +25,36 @@ import { onAuthStateChanged } from "firebase/auth";
 const Create = () => {
     const storage = getStorage();
 
+    const convertToBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+                resolve(fileReader.result)
+            };
+            fileReader.onerror = (error) => {
+                reject(error)
+            }
+        })
+    }
+
     const [userVerified, setUserVerified] = useState(false)
     const [user, setUser] = useState(false)
     const [userEmail, setUserEmail] = useState("")
     const location = useLocation();
 
 
-    const upload = () => {
+    const upload = async () => {
         if (form.photo == null) {
             return;
         }
-        const ref2 = ref(storage, `images/${userEmail}/${form.prompt}`)
-        uploadBytes(ref2, form.photo).then(() => {
-            alert('Uploaded a file!');
-        });
+        try {
+            const ref2 = ref(storage, `images/${userEmail}/${form.prompt}`)
+            const b64Img = await convertToBase64(form.photo)
+            uploadBytes(ref2, b64Img)
+        } catch (error) {
+            console.log(error);
+        }
     }
 
 
