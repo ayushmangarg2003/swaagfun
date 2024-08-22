@@ -51,6 +51,19 @@
     opacity: 0.3;
 }
 
+.downloadBtn {
+    background-color: rgba(0, 128, 0, 0.8);
+    width: 120px;
+    padding: 12px 0;
+    border-radius: 8px;
+    color: #f6f6f6;
+    transition: var(--transition-normal);
+    align-self: center;
+    &:hover {
+        background-color: green;
+    }
+}
+
 .generate-btn {
     background-color: rgba(0, 128, 0, 0.8);
     width: 120px;

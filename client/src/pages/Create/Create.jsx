@@ -21,22 +21,28 @@ import axios from 'axios';
 import { backendLink } from "../../utils/details";
 import { auth } from "../../firebase";
 import { onAuthStateChanged } from "firebase/auth";
+import { saveAs } from 'file-saver';
 
 const Create = () => {
     const storage = getStorage();
 
-    const convertToBase64 = (file) => {
-        return new Promise((resolve, reject) => {
-            const fileReader = new FileReader();
-            fileReader.readAsDataURL(file);
-            fileReader.onload = () => {
-                resolve(fileReader.result)
-            };
-            fileReader.onerror = (error) => {
-                reject(error)
-            }
-        })
+    const downloadImage = () => {
+        console.log(form.photo);
+        saveAs(form.photo[0], 'image.webp') // Put your image URL here.
     }
+
+    // const convertToBase64 = (file) => {
+    //     return new Promise((resolve, reject) => {
+    //         const fileReader = new FileReader();
+    //         fileReader.readAsDataURL(file);
+    //         fileReader.onload = () => {
+    //             resolve(fileReader.result)
+    //         };
+    //         fileReader.onerror = (error) => {
+    //             reject(error)
+    //         }
+    //     })
+    // }
 
     const [userVerified, setUserVerified] = useState(false)
     const [user, setUser] = useState(false)
@@ -50,8 +56,8 @@ const Create = () => {
         }
         try {
             const ref2 = ref(storage, `images/${userEmail}/${form.prompt}`)
-            const b64Img = await convertToBase64(form.photo)
-            uploadBytes(ref2, b64Img)
+            // const b64Img = await convertToBase64(form.photo)
+            uploadBytes(ref2, form.photo)
         } catch (error) {
             console.log(error);
         }
@@ -293,7 +299,10 @@ const Create = () => {
 
                 <div className="photoParent">
                     {form.photo ? (
-                        <img src={form.photo} alt={form.prompt} />
+                        <>
+                            <img src={form.photo} alt={form.prompt} />
+                            <button className="downloadBtn" onClick={downloadImage}>Download</button>
+                        </>
                     ) : (
                         <img src={preview} alt="Preview" className="preview" />
                     )}

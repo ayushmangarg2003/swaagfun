@@ -5,33 +5,34 @@ import img4 from "../assets/4.webp"
 import img5 from "../assets/5.webp"
 import img6 from "../assets/6.webp"
 
-export const IMAGES = [
+export const IMAGES2 = [
     {
         img: img1,
-        caption: "Imagine the desk of a person when they are managing their Taxes"
+        caption: "A sleek and modern abstract design with curved shapes in black, red, and yellow, creating a bold and dynamic visual effect"
     },
     {
         img: img2,
-        caption: "Imagine the desk of a person when they are managing their Taxes"
+        caption: "Rainbow-colored light trails converging in dynamic arcs, creating a lively, energetic effect"
     },
     {
         img: img3,
-        caption: "Detailed Image of a guy with long hair and a brown guitar in his hand and many guitars in the background"
+        caption: "A whirlpool of orange and violet hues form a mesmerizing galaxy, with stars twinkling amid the swirling nebulae"
     },
+
 ]
-export const IMAGES2 = [
+export const IMAGES = [
     {
         img: img4,
-        caption: "A physical silmuation of a digital image Maketplace"
+        caption: "Blue light trails forming elegant curves against a black backdrop, creating a sense of fluidity and modernity"
     },
     {
         img: img5,
-        caption: "Draw an image of 2 bright cars one is gray and other one is orange"
+        caption: "A futuristic abstract design with sharp, geometric shapes in black and gold, creating a sleek and modern visual effect"
     },
     {
         img: img6,
-        caption: "A few decks of Red and Blue playing cards with King of Hearts on the Top"
-    }
+        caption: "A mesmerizing display of fireworks with colorful bursts lighting up the dark sky, capturing the spirit of celebration"
+    },
 ]
 
 

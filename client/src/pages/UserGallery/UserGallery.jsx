@@ -14,18 +14,22 @@ const UserGallery = () => {
 
 
 
-  useEffect(() => {
-    listAll(listRef)
-      .then((res) => {
-        res.items.forEach((itemRef) => {
-          console.log(itemRef);
-          setUrls((arr) => [...arr, itemRef.name]);
-        });
-      })
-      .catch((err) => {
-        alert(err.message);
-      });
-  }, []);
+  // const tempFunc = () => {
+  //   listAll(listRef)
+  //     .then((res) => {
+  //       res.items.forEach((itemRef) => {
+  //         setUrls((arr) => [...arr, itemRef.name]);
+  //         console.log(urls);
+  //       });
+  //     })
+  //     .catch((err) => {
+  //       alert(err.message);
+  //     });
+  // }
+
+  // useEffect(() => {
+  //   tempFunc()
+  // }, []);
 
 
   onAuthStateChanged(auth, (user) => {
@@ -39,11 +43,11 @@ const UserGallery = () => {
 
   return (
     <div className="userGalleryParent">
-      {
-        urls.map((url, index) => {
-          // <div key={index}>{url}</div>
-        })
-      }
+      {/* {
+        urls.map((url, index) => (
+          <h1 key={index}>{url}</h1>
+        ))
+      } */}
       <h1 className='userGalleryHeading'>{email}</h1>
     </div>
   )
