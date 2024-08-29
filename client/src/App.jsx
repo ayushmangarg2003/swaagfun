@@ -8,6 +8,7 @@ import Register from './pages/Register/Register'
 import Navbar from './components/Navbar/Navbar'
 import Create from './pages/Create/Create'
 import UserGallery from './pages/UserGallery/UserGallery'
+import Gallery from './pages/Gallery/Gallery'
 import Profile from './pages/Profile/Profile'
 import ScrollToTop from './components/ScrollToTop'
 
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="/create" element={<Create />} />
           <Route path="/profile/userGallery" element={<UserGallery />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/gallery" element={<Gallery />} />
         </Routes>
         <Footer />
       </BrowserRouter>

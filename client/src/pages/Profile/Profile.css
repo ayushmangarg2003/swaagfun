@@ -62,6 +62,20 @@
     background-color: rgb(0, 150, 0);
 }
 
+.galleryBtn {
+    background-color: rgb(0, 120, 180);
+    padding: 8px 24px;
+    border-radius: 4px;
+    color: var(--white);
+    font-weight: 600;
+    width: 100%;
+    font-size: 20px;
+    transition: 0.2s ease;
+}
+.galleryBtn:hover{
+    background-color: rgb(0, 120, 150);
+}
+
 .verifyBtn {
     background-color: rgb(0, 180, 0);
     padding: 6px 4px;

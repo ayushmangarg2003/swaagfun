@@ -44,6 +44,10 @@ const Profile = () => {
 
     const navigateGallery = (e) => {
         e.preventDefault()
+        navigate('../gallery')
+    }
+    const navigateMyImages = (e) => {
+        e.preventDefault()
         navigate('userGallery')
     }
 
@@ -59,7 +63,8 @@ const Profile = () => {
                                 <h1>Status: Verified
                                     <i className="fa-regular fa-circle-check"></i>
                                 </h1>
-                                <button className='imagesBtn' onClick={navigateGallery}>View My Images</button>
+                                <button className='imagesBtn' onClick={navigateMyImages}>View My Images</button>
+                                <button className='galleryBtn' onClick={navigateGallery}>View Gallery</button>
                             </>
                         ) :
                             (
