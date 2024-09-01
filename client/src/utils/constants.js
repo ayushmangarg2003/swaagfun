@@ -5,6 +5,8 @@ import img4 from "../assets/4.webp"
 import img5 from "../assets/5.webp"
 import img6 from "../assets/6.webp"
 
+export const categories = ['art', 'tech', 'music', 'sports']
+
 export const IMAGES2 = [
     {
         img: img1,

@@ -1,0 +1,34 @@
+.galleryParent {
+    padding-top: 7rem;
+    -webkit-overflow-scrolling: touch;
+}
+
+.categoryList {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    overflow-x: scroll;
+
+    & a {
+        padding: 4px 16px;
+        border-radius: 4px;
+        background-color: var(--primary-color);
+        color: #f6f6f6;
+        font-weight: 600;
+        transition: var(--transition-normal);
+
+        &:hover {
+            background-color: var(--second-color);
+        }
+    }
+}
+
+.categoryList::-webkit-scrollbar {
+    display: none;
+}
+
+.shimmer-parent {
+    width: 90%;
+    padding: 1rem 0;
+    margin: auto;
+}
